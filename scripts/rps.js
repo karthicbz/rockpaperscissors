@@ -10,3 +10,16 @@ function getComputerChoice(){
     }
 }
 
+function playerSelection(){
+    let result = prompt("Type 'rock', 'paper' or 'scissors' in the box below").toLowerCase();
+    let noError = true;
+    while(noError){
+        if(result != 'rock' && result != 'paper' && result != 'scissors'){
+            result = prompt("Enter only 'rock', 'paper' or 'scissors'");
+        }else{
+            noError = false;
+        }
+    }
+    return result;
+}
+
