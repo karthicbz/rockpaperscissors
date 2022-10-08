@@ -40,3 +40,30 @@ function playRound(playerSelection, computerSelection){
 
 // alert(playRound(playerSelection(), getComputerChoice()));
 
+function game(){
+    let playerWinCount = 0;
+    let computerWinCount = 0;
+    let result;
+
+    for(let i=0; i<5; i++){
+        result = playRound(playerSelection(), getComputerChoice());
+        console.log(result);
+        if(result == 'player win'){
+            playerWinCount += 1;
+        }else{
+            computerWinCount += 1;
+        }
+    }
+
+    if(playerWinCount > computerWinCount){
+        console.log('You beat the computer, humans can live in peace for one day..');
+    }else if(playerWinCount < computerWinCount){
+        console.log('Computer beats you, now who will save the mankind :(');
+    }else{
+        console.log('It\'s a tie');
+    }
+
+    // console.log(`player:${playerWinCount}, computer:${computerWinCount}`);
+}
+
+game();
