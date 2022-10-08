@@ -23,3 +23,20 @@ function playerSelection(){
     return result;
 }
 
+function playRound(playerSelection, computerSelection){
+    // console.log(computerSelection, playerSelection)
+    if(playerSelection == 'rock' && computerSelection == 'scissors' || 
+    playerSelection == 'paper' && computerSelection == 'rock' || 
+    playerSelection == 'scissors' && computerSelection == 'paper'){
+        return 'player win';
+    }else if(computerSelection == 'rock' && playerSelection == 'scissors' || 
+    computerSelection == 'paper' && playerSelection == 'rock' || 
+    computerSelection == 'scissors' && playerSelection == 'paper'){
+        return 'Computer win';
+    }else{
+        return "It's a tie";
+    }
+}
+
+// alert(playRound(playerSelection(), getComputerChoice()));
+
