@@ -30,6 +30,7 @@ const resultText = document.querySelector('.scoreDisplay');
 const playsRemaining = document.querySelector('.playRemaining');
 const replay = document.querySelector('a');
 const playerOptions = document.querySelector('.playerOptions');
+const computerChoosed = document.querySelector('.computerChoosed');
 
 let count = 5;
 let playerWinCount = 0;
@@ -37,9 +38,14 @@ let computerWinCount = 0;
 
 playsRemaining.textContent = `plays remaining: ${count}`;
 
+computerChoosed.innerHTML = '';
+
 playerSelectionButton.forEach((image)=>image.addEventListener('click', ()=>{
     // console.log(playRound(image.alt, getComputerChoice()));
-    const result = playRound(image.alt, getComputerChoice());
+    const computerChoice = getComputerChoice();
+    computerChoosed.innerHTML = `<p>Computer's Choice</p><img src='./img/${computerChoice}.png'>`;
+    // computerChoosed.innerHTML.setAttribute('src', `./img/${computerChoice}.png`);
+    const result = playRound(image.alt, computerChoice);
     resultText.textContent = result;
     playsRemaining.textContent = `plays remaining: ${--count}`;
     game(result, count);
