@@ -25,43 +25,53 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-/*function game(){
-    let playerWinCount = 0;
-    let computerWinCount = 0;
-    let result;
-
-    for(let i=0; i<5; i++){
-        result = playRound(playerSelection(), getComputerChoice());
-        console.log(result);
-        if(result == 'player win'){
-            playerWinCount += 1;
-        }else{
-            computerWinCount += 1;
-        }
-    }
-
-    if(playerWinCount > computerWinCount){
-        console.log('You beat the computer, humans can live in peace for one day..');
-    }else if(playerWinCount < computerWinCount){
-        console.log('Computer beats you, now who will save the mankind :(');
-    }else{
-        console.log('It\'s a tie');
-    }
-}*/
-
 const playerSelectionButton = document.querySelectorAll('img');
 const resultText = document.querySelector('.scoreDisplay');
+const playsRemaining = document.querySelector('.playRemaining');
+const replay = document.querySelector('a');
+const playerOptions = document.querySelector('.playerOptions');
+
+let count = 5;
+let playerWinCount = 0;
+let computerWinCount = 0;
+
+playsRemaining.textContent = `plays remaining: ${count}`;
 
 playerSelectionButton.forEach((image)=>image.addEventListener('click', ()=>{
     // console.log(playRound(image.alt, getComputerChoice()));
-    resultText.textContent = playRound(image.alt, getComputerChoice());
-}))
+    const result = playRound(image.alt, getComputerChoice());
+    resultText.textContent = result;
+    playsRemaining.textContent = `plays remaining: ${--count}`;
+    game(result, count);
+}));
 
+replay.addEventListener('click', ()=>{
+    location.reload();
+});
 
-// playerSelection.forEach((button)=>{
-//     button.addEventListener('click', ()=>{
-//         console.log(button.value);
-//     })
-// })
+function game(result, count){
+    // let result;
+
+    if(result == 'You win'){
+        playerWinCount += 1;
+    }else if(result == 'Computer win'){
+        computerWinCount += 1;
+    }
+
+    if(count == 0){
+        if(playerWinCount > computerWinCount){
+            resultText.textContent='You beat the computer, humans can live in peace for one day..';
+        }else if(playerWinCount < computerWinCount){
+            resultText.textContent='Computer beats you, now who will save the mankind :(';
+        }else{
+            resultText.textContent='It\'s a tie';
+        }
+        playsRemaining.textContent = '';
+        replay.textContent = 'Replay?';
+        replay.classList.add('replay');
+        playerOptions.innerHTML = '';
+    }
+}
+
 
 // game();

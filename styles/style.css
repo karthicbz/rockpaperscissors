@@ -14,6 +14,19 @@ p{
     text-align: center;
 }
 
+.replay{
+    width: fit-content;
+    display: block;
+    border: 1px solid #c3c3c3;
+    padding: 10px;
+    font-size: 24px;
+    text-decoration: none;
+    background-color: #c3c3c3;
+    color: black;
+    transition: transform 0.10s;
+    margin: 0 auto;
+}
+
 .playerOptions{
     /* border: 1px solid black; */
     display: flex;
@@ -29,5 +42,9 @@ img{
 }
 
 img:hover{
+    transform: scale(1.1);
+}
+
+.replay:hover{
     transform: scale(1.1);
 }
