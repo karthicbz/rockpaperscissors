@@ -10,18 +10,18 @@ function getComputerChoice(){
     }
 }
 
-function playerSelection(){
-    let result = prompt("Type 'rock', 'paper' or 'scissors' in the box below").toLowerCase();
-    let noError = true;
-    while(noError){
-        if(result != 'rock' && result != 'paper' && result != 'scissors'){
-            result = prompt("Enter only 'rock', 'paper' or 'scissors'");
-        }else{
-            noError = false;
-        }
-    }
-    return result;
-}
+// function playerSelection(){
+//     let result = prompt("Type 'rock', 'paper' or 'scissors' in the box below").toLowerCase();
+//     let noError = true;
+//     while(noError){
+//         if(result != 'rock' && result != 'paper' && result != 'scissors'){
+//             result = prompt("Enter only 'rock', 'paper' or 'scissors'");
+//         }else{
+//             noError = false;
+//         }
+//     }
+//     return result;
+// }
 
 function playRound(playerSelection, computerSelection){
     // console.log(computerSelection, playerSelection)
@@ -38,9 +38,7 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-// alert(playRound(playerSelection(), getComputerChoice()));
-
-function game(){
+/*function game(){
     let playerWinCount = 0;
     let computerWinCount = 0;
     let result;
@@ -62,8 +60,19 @@ function game(){
     }else{
         console.log('It\'s a tie');
     }
+}*/
 
-    // console.log(`player:${playerWinCount}, computer:${computerWinCount}`);
-}
+const playerSelectionButton = document.querySelectorAll('button');
 
-game();
+playerSelectionButton.forEach((button)=>button.addEventListener('click', ()=>{
+    console.log(playRound(button.innerText.toLowerCase(), getComputerChoice()));
+}))
+
+
+// playerSelection.forEach((button)=>{
+//     button.addEventListener('click', ()=>{
+//         console.log(button.value);
+//     })
+// })
+
+// game();
