@@ -10,25 +10,12 @@ function getComputerChoice(){
     }
 }
 
-// function playerSelection(){
-//     let result = prompt("Type 'rock', 'paper' or 'scissors' in the box below").toLowerCase();
-//     let noError = true;
-//     while(noError){
-//         if(result != 'rock' && result != 'paper' && result != 'scissors'){
-//             result = prompt("Enter only 'rock', 'paper' or 'scissors'");
-//         }else{
-//             noError = false;
-//         }
-//     }
-//     return result;
-// }
-
 function playRound(playerSelection, computerSelection){
     // console.log(computerSelection, playerSelection)
     if(playerSelection == 'rock' && computerSelection == 'scissors' || 
     playerSelection == 'paper' && computerSelection == 'rock' || 
     playerSelection == 'scissors' && computerSelection == 'paper'){
-        return 'player win';
+        return 'You win';
     }else if(computerSelection == 'rock' && playerSelection == 'scissors' || 
     computerSelection == 'paper' && playerSelection == 'rock' || 
     computerSelection == 'scissors' && playerSelection == 'paper'){
@@ -62,10 +49,12 @@ function playRound(playerSelection, computerSelection){
     }
 }*/
 
-const playerSelectionButton = document.querySelectorAll('button');
+const playerSelectionButton = document.querySelectorAll('img');
+const resultText = document.querySelector('.scoreDisplay');
 
-playerSelectionButton.forEach((button)=>button.addEventListener('click', ()=>{
-    console.log(playRound(button.innerText.toLowerCase(), getComputerChoice()));
+playerSelectionButton.forEach((image)=>image.addEventListener('click', ()=>{
+    // console.log(playRound(image.alt, getComputerChoice()));
+    resultText.textContent = playRound(image.alt, getComputerChoice());
 }))
 
 
