@@ -38,15 +38,16 @@ let computerWinCount = 0;
 
 playsRemaining.textContent = `plays remaining: ${count}`;
 
-computerChoosed.innerHTML = '';
+computerChoosed.innerHTML = '<p>Your Choices:</p>';
 
 playerSelectionButton.forEach((image)=>image.addEventListener('click', ()=>{
     // console.log(playRound(image.alt, getComputerChoice()));
     const computerChoice = getComputerChoice();
-    computerChoosed.innerHTML = `<p>Computer's Choice</p><img src='./img/${computerChoice}.png'>`;
+    computerChoosed.innerHTML = `<p>Computer chose</p><img src='./img/${computerChoice}.png'><p>Your Choices`;
     // computerChoosed.innerHTML.setAttribute('src', `./img/${computerChoice}.png`);
     const result = playRound(image.alt, computerChoice);
     resultText.textContent = result;
+    resultText.classList.add('animate');
     playsRemaining.textContent = `plays remaining: ${--count}`;
     game(result, count);
 }));
@@ -57,7 +58,7 @@ replay.addEventListener('click', ()=>{
 
 function game(result, count){
     // let result;
-
+    // resultText.classList.remove('playing');
     if(result == 'You win'){
         playerWinCount += 1;
     }else if(result == 'Computer win'){
@@ -76,8 +77,13 @@ function game(result, count){
         replay.textContent = 'Replay?';
         replay.classList.add('replay');
         playerOptions.innerHTML = '';
+        computerChoosed.innerHTML = '';
     }
 }
+
+resultText.addEventListener('transitionend', (e)=>{
+    e.target.classList.remove('animate');
+});
 
 
 // game();
