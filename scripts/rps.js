@@ -59,6 +59,7 @@ replay.addEventListener('click', ()=>{
 function game(result, count){
     // let result;
     // resultText.classList.remove('playing');
+
     if(result == 'You win'){
         playerWinCount += 1;
     }else if(result == 'Computer win'){
@@ -84,6 +85,5 @@ function game(result, count){
 resultText.addEventListener('transitionend', (e)=>{
     e.target.classList.remove('animate');
 });
-
 
 // game();

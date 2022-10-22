@@ -58,6 +58,13 @@ img{
     /* flex-wrap: wrap; */
 }
 
+.computerChoosed img{
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    transition: all .07s ease;
+}
+
 img:hover{
     transform: scale(1.1);
 }
